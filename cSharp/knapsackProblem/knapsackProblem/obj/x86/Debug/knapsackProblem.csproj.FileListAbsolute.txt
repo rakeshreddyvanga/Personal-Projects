@@ -1,0 +1,4 @@
+c:\users\rvanga\documents\visual studio 2010\Projects\knapsackProblem\knapsackProblem\bin\Debug\knapsackProblem.exe
+c:\users\rvanga\documents\visual studio 2010\Projects\knapsackProblem\knapsackProblem\bin\Debug\knapsackProblem.pdb
+c:\users\rvanga\documents\visual studio 2010\Projects\knapsackProblem\knapsackProblem\obj\x86\Debug\knapsackProblem.exe
+c:\users\rvanga\documents\visual studio 2010\Projects\knapsackProblem\knapsackProblem\obj\x86\Debug\knapsackProblem.pdb
