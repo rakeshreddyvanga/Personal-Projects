@@ -1,0 +1,5 @@
+D:\Studies\C#Workspace\DFS\DFS\bin\Debug\DFS.exe
+D:\Studies\C#Workspace\DFS\DFS\bin\Debug\DFS.pdb
+D:\Studies\C#Workspace\DFS\DFS\obj\x86\Debug\DFS.csprojResolveAssemblyReference.cache
+D:\Studies\C#Workspace\DFS\DFS\obj\x86\Debug\DFS.exe
+D:\Studies\C#Workspace\DFS\DFS\obj\x86\Debug\DFS.pdb
