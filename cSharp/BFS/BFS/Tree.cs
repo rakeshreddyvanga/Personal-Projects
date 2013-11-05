@@ -90,12 +90,12 @@ namespace BFS
             while (queue.Count != 0)
             {
                 LinkedList currentNode = queue.Dequeue();
-                Visited[currentNode.Data] = true;
+                Visited[currentNode.Data-1] = true;
                 Console.WriteLine(currentNode.Data);
                 currentNode = currentNode.NextNode;
                 while (currentNode != null)
                 {
-                    if (Visited[currentNode.Data] == false)
+                    if (Visited[currentNode.Data-1] == false)
                     {
                         queue.Enqueue(returnNode(currentNode.Data));
                     }

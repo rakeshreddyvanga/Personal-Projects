@@ -28,27 +28,6 @@ namespace BFS
             set { nextNode = value; }
         }
 
-        public Boolean add(int data)
-        {
-            if (this == null)
-            {
-                throw new NullReferenceException();
-            }
-            LinkedList currentNode = this.NextNode;
-            while (true)
-            {
-                if (currentNode == null)
-                {
-                    currentNode = new LinkedList(data);
-                    return true;
-                }
-                else
-                {
-                    currentNode = currentNode.NextNode;
-                }
-            }
-        }
-
     }
 
  }
