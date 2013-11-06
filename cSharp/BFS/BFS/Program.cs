@@ -24,7 +24,7 @@ namespace BFS
                 treeOperations.Visited[i] = false;
             }
 
-
+            Console.WriteLine("Please start numbering the nodes from 1");
             for (int i = 0; i < noofNodes; i++)
             {
                 Console.WriteLine("Enter the " + (i + 1) + " node value");
