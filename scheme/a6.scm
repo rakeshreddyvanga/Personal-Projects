@@ -10,6 +10,7 @@
         (if once-only 
           (error 'empty-k "You can only invoke the empty continuation once")
           (begin (set! once-only #t) v))))))
+
 (define fact
   (trace-lambda factmain (n)
       (cond
@@ -46,10 +47,10 @@
                                   (k (* (car ls) v))))])))
 
     
-(define plus-cps  
+(trace-define plus-cps  
   (lambda (x k)
-    (lambda (y k^)
-      (k^ (+ x y)))))
+    (k (lambda (y k)
+     (k (+ x y))))))
 
 (define count-syms*-cps
   (lambda (ls k)
@@ -132,8 +133,8 @@
 (define pascal-cps
   (lambda (n k)
     (let ([pascal-cps
-                  (trace-lambda p (pascal-cps k)
-                    (trace-lambda ma (m a k2)
+                  (lambda  (pascal-cps k)
+                    (lambda (m a k2)
                       (cond
                         [(> m n)  (k '())]
                         [else (let ((a (+ a m)))
@@ -167,10 +168,11 @@
       [else #f])))))
 
  (define unify-cps
-  (trace-lambda main (v w s k)
+  (lambda (v w s k)
     (walk-cps v s (lambda (wv) (walk-cps w s (lambda (ww)
-       (let ([v wv] [w ww])
-        (cond
+       (let ([v wv]) 
+         (let ([w ww])
+           (cond
           [(eq? v w) (k s)]
           [(symbol? v) (k (extend-s v w s))]
           [(symbol? w) (k (extend-s w v s))]
@@ -181,7 +183,7 @@
                       [s (unify-cps (cdr v) (cdr w) s k)]
                       [else (k #f)]))))]
           [(equal? v w) (k s)]
-          [else (k #f)]))))))))
+          [else (k #f)])))))))))
 
  (define M
   (lambda (f)
@@ -219,12 +221,18 @@
 
  (define strange-cps
  (lambda  (x k)
-    ((lambda  (g k)  (lambda  (x k)  (k (g g k))))
+    ( (lambda  (g k)  (lambda  (x k)  (k (g g k))))
       (lambda  (g k)  (lambda  (x k) (k (g g k)))) k)))
 
  (define use-of-strange-cps
         (let ([strange^ (((strange-cps 5 (empty-k)) 6 (empty-k)) 7 (empty-k))])
         (((strange^ 8 (empty-k)) 9 (empty-k)) 10 (empty-k))))
+
+
+ (define use-of-strange-cps-test
+        (let ([strange^ (((strange-cps 5 (empty-k)) 6  (empty-k)) 7 (empty-k))])
+        (((strange^ 8  (empty-k)) 9 (empty-k)) 10 (empty-k))))
+
 
 (define why
  (lambda (f)

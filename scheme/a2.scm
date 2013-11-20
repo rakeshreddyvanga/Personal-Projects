@@ -1,4 +1,7 @@
-  (define list-ref
+ (load "pmatch.scm")
+ (load "test.scm")
+ 
+ (define list-ref
     (lambda (ls n)
       (letrec ((nth-cdr (lambda (x)
                           (cond

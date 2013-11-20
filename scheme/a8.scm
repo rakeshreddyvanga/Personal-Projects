@@ -9,6 +9,7 @@
   (lambda (m k)
    `(else-k-ack ,m ,k)))
 
+
 (define app-k-ack
  (lambda () ;; *k *v
   (pmatch *k
@@ -74,9 +75,7 @@
       [`(pair-outer-depth ,ls ,k) 
           (begin
             (set! *k  (pair-inner-depth *v k))
-            (set! *ls (cdr ls))
-            (depth-reg))])))
-   
+            (set! *ls (cdr ls)))])))
 
 (define pair-inner-depth
   (lambda (l k)
@@ -468,6 +467,31 @@
       (lambda ()
         (fib n1 (empty-k-fib jumpout)))
       (lambda ()
-        (fib n2 (empty-k-fib (empty-k-fib))))
+        (fib n2 (empty-k-fib jumpout)))
             (lambda ()
         (fib n3 (empty-k-fib jumpout))))))))
+
+
+(trace-define bi-trampoline
+  (lambda (n1 n2)
+    (cond
+      [(and (procedure? (n1))  (procedure? (n2))) (list (bi-trampoline n2 (n1)))]
+      [(and (procedure? (n1))  (not (procedure? (n2)))) (cons (n2) (bi-trampoline (n1) ((n1))))]
+      [(and (procedure? (n2)) (not (procedure? (n1)))) (cons (n1) (bi-trampoline (n2) ((n2))))]
+      [else (cons n1 n2)])))
+
+(define bi-trampoline1
+  (lambda (n1 n2)
+    (bi-trampoline )))
+
+(define bi-tramp-driver
+  (lambda (n1 n2)
+    (call/cc
+      (lambda (j)
+        (bi-trampoline 
+            (lambda ()
+              (fib n1 (empty-k-fib j)))
+            (lambda ()
+             ;; (fib n2 (empty-k-fib j)))
+           ;; (lambda ()
+              (fib n2 (empty-k-fib j))))))))

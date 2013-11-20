@@ -17,6 +17,7 @@
       [`(set! ,x ,value) (guard (symbol? x))  (set-box! (apply-env env x) (val-of-cbv value env) )]
       [`(random ,n) (random (val-of-cbv n env))]
       [`,x (guard (symbol? x)) (unbox (apply-env env x))]
+      [`(let ((,x ,value)) ,body) (let ((a (box (value-of-cbv value env)))) (value-of body (extend-env x a env)))] 
       [`(lambda (,x) ,body) (closure-cbv x body env)]
       [`(,rator ,x) (guard (symbol? x)) (apply-closure (val-of-cbv rator env) (box (unbox (apply-env env x))))]
       [`(,rator ,rand) (apply-closure (val-of-cbv rator env) (box (val-of-cbv rand env)))])))
@@ -72,6 +73,7 @@
       [`(random ,n) (random (val-of-cbr n env))]
       [`,x (guard (symbol? x)) (unbox (apply-env env x))]
       [`(lambda (,x) ,body) (closure-cbr x body env)]
+      [`(let ((,x ,value)) ,body) (let ((a (box (value-of-cbr value env)))) (value-of body (extend-env x a env)))] 
       [`(,rator ,x) (guard (symbol? x)) (apply-closure (val-of-cbr rator env) (apply-env env x))]
       [`(,rator ,rand) (apply-closure (val-of-cbr rator env) (box (val-of-cbr rand env)))])))
 
@@ -125,9 +127,10 @@
 
 (define unbox/need
 	(lambda (b)
-	  (let ([ val ((unbox b))])
-	       (set-box! b (lambda () val))
-		  val)))
+	  (let ([ val (unbox b)])
+      (let ([a (val)])
+	       (set-box! b val)
+		  a))))
 
 
 (define val-of-cbden

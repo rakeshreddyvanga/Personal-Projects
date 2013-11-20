@@ -17,6 +17,11 @@
      (errorf 'empty-k-fn "You can only invoke the empty continuation once")
       (begin (set! once-only #t) v))))))
 
+
+(define empty-k-ds
+  (lambda ()
+  `(empty-k-ds)))
+
 (define binary-to-decimal
  (trace-lambda main (n)
   (cond
@@ -278,7 +283,7 @@
     (lambda (x2 env k)
       `(*-outer-k-ds ,x2 ,env ,k)))
 
-(define app-k-ds
+(trace-define app-k-ds
     (lambda (k v)
       (pmatch k
         [`(empty-k-ds) v]
@@ -294,7 +299,8 @@
         [`(return-k-ds ,v-exp ,env) (value-of-cps-ds v-exp env v)]
         [`(app-inner-k-ds ,clos ,k) (apply-closure-ds clos v k)]
         [`(app-outer-k-ds ,rand ,env ,k) (value-of-cps-ds rand env (app-inner-k-ds v k))]
-        [else (k v)])))
+       ;; [else (k v)]
+        )))
 
   (define sub1-k-ds
     (lambda (k)
