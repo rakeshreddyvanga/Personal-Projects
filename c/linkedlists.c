@@ -141,7 +141,11 @@ llst *reverse(llst *head)
 void display(llst * head)
 {
   llst * curr = head;
-
+  
+  if(curr == NULL)
+    printf("Empty list\n");
+  else
+  {
   printf("%d",curr->value);
   while(curr->next != NULL)
   {
@@ -149,6 +153,7 @@ void display(llst * head)
       printf(" -> %d",curr->value);
   }
   printf("\n");
+  }
 }
 
 //main function
