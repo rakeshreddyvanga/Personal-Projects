@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EBI_Publish_Workflows.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EBI_Publish_Workflows_SiteDataWebService_SiteData" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://edss.iu.edu/_vti_bin/siteData.asmx</Value>
+    </Setting>
+    <Setting Name="EBI_Publish_Workflows_WebsWebService_Webs" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://edss.iu.edu/_vti_bin/Webs.asmx</Value>
+    </Setting>
+    <Setting Name="EBI_Publish_Workflows_NintexWorkFlowServices_NintexWorkflowWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://edss.iu.edu/_vti_bin/nintexworkflow/workflow.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

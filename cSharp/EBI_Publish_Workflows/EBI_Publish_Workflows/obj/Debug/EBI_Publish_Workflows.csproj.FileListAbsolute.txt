@@ -1,0 +1,13 @@
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.exe.config
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.exe
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.pdb
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.csprojResolveAssemblyReference.cache
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.Properties.Resources.resources
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.csproj.GenerateResource.Cache
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.exe
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.pdb
+c:\users\rvanga\documents\visual studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.formPublishWorkflows.resources
+C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.exe.manifest
+C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.application
+C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.exe.manifest
+C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.application
