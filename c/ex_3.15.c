@@ -5,34 +5,34 @@
 int main(int argc, char *argv[])
 {
   pid_t pid;
-/*
+
   if(argc == 1)
   {
-    printf("please supply the input number");
+    printf("please supply the input number\n");
     return 0;
   }
   else if (argc == 2)
   {
-    if(argv[1] < 0)
+    if(atoi(argv[1]) < 0)
       {
-        printf("please input a positive number");
+        printf("please input a positive number\n");
         return 0;
       }      
   }
   else if(argc > 2)
   {
-    printf("please input single number only");
+    printf("please input single number only\n");
     return 0;
   } 
-  int input = argv[1]; */
+  int input = atoi(argv[1]); 
   
-  int input;
+ /* int input;
   printf("Enter the number:\n");
   scanf("%d",&input);
   if(input < 0){
   printf("enter positive number\n");
   return 0;
-  }
+  }*/
 
   pid = fork();
 
