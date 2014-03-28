@@ -1,0 +1,14 @@
+﻿
+ #detailsHead {
+     border:solid;
+     border-width:1px;
+     border-color:black;
+     border-radius:5px;
+}
+
+.details {
+    border:solid;
+    border-width:1px;
+    border-color:black;
+     border-radius:5px;
+}

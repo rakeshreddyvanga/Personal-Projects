@@ -1,0 +1,130 @@
+﻿@*<style type="text/css">
+     #detailsHead {
+     border:solid;
+     border-width:1px;
+     border-color:black;
+     border-radius:5px;
+}
+
+.details {
+    border:solid;
+    border-width:1px;
+    border-color:black;
+     border-radius:5px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"> 
+    $(document).ready(function () {
+        alert("In custom JS");
+        $("#detailsHead").click(function () {
+            $("#detailsId").slideToggle(1000);
+        });
+    });
+</script>*@
+
+@model MvcAuction.Models.Auction
+
+@{ //Using Razor code for code block
+   //var auction = new MvcAuction.Models.Auction() 
+   //{
+   //    Title = "Example Auction",
+   //    StartTime = DateTime.Now,
+   //    StartPrice = 25.43m,
+   //    EndTime = DateTime.Now.AddDays(4),
+   //    Description = " This the demo auction using model directly in view",
+   //     CurrentPrice =  null,
+   //};
+
+   // var auction = (MvcAuction.Models.Auction)ViewData["Auction"];
+    //var auction = ViewBag.Auction;
+    
+    var auction = Model;
+}
+
+@* Comments in Razor Code *@
+<h1>Auction</h1>
+
+<div class="auction">
+    <h2>@auction.Title</h2>
+    <div class="description">
+        <h3>@auction.Description</h3>
+    </div>
+    <div id ="detailsHead"> Click Here </div>
+    <div class="details" id="detailsId">
+    <p>Start Time: @auction.StartTime.ToString("g")</p>
+    <p>End Time: @auction.EndTime.ToString("g")</p>
+    <p>Starting Price: @auction.StartPrice.ToString("C")</p>
+    <p>ID: @auction.Id.ToString()</p>
+    @* Check whether the current price is null or not *@
+    <p class="current-price">
+        Current Price:
+        @if (auction.CurrentPrice == null)
+        {
+            @: [No bids]
+        }
+        else
+        {
+            <span>@auction.CurrentPrice.Value.ToString("C")</span>
+            <span>[@auction.BidCount bids]</span>
+        }
+    </p>
+    <p>
+        @using (Html.BeginForm("Bid", "Auctions"))
+        {
+            var lowestBidAmount = auction.CurrentPrice.GetValueOrDefault(auction.StartPrice) + 1;
+            <span>
+                Bid: $@Html.TextBox("amount", lowestBidAmount)
+                @Html.ValidationMessage("amount")
+            </span>
+            @Html.Hidden("auctionId", auction.Id)
+            @Html.AntiForgeryToken()
+            <input type="submit" value="Post Bid" class ="post-bid" />
+        }
+    </p>
+    @if (auction.ImageUrl != null)
+    {
+        <div class="image" >
+            <img src ="@auction.ImageUrl" style="width:50px; height:50px;"/>
+        </div>
+    }
+  </div>
+
+</div>
+
+<script id="current-price-template" type="application/html-template">
+<p class="current-price">        
+            <span>Current Price: {{Current-Price}}</span>
+            <span>[{{BidCount}} bids]</span>
+    </p>
+</script>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(".post-bid").on("click", function () {
+                var form = $(this).parent("form");
+
+                $.ajax({
+                    type: "POST",
+                    url: form.attr('action'),
+                    data: form.serialize()
+                })
+                .success(function (data) {
+                    var template = $("#current-price-template").clone().html();
+
+                    var html = template
+                                        .replace('{{Current-Price}}', data.CurrentPrice)
+                                        .replace('{{BidCount}}', data.BidCount);                                    
+                    
+                    $(".current-price").replaceWith(html);
+                    //alert("Success");
+                })
+                .error(function () {
+                    alert("Error in the ajax call");
+                })
+                return false;
+            });
+        });
+    </script>
+}
+ 
