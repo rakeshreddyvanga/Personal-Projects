@@ -11,3 +11,6 @@ C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_
 C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.application
 C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.exe.manifest
 C:\Users\rvanga\Documents\Visual Studio 2012\Projects\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.application
+C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\EBI_Publish_Workflows\EBI_Publish_Workflows\bin\Debug\EBI_Publish_Workflows.exe.config
+C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.exe
+C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\EBI_Publish_Workflows\EBI_Publish_Workflows\obj\Debug\EBI_Publish_Workflows.pdb
