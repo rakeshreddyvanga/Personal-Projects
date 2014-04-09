@@ -1,4 +1,4 @@
 personalWork
 ============
 
-/* Contains basic projects related to C#. */
+/* Contains academic and little bit overview of professional projects */
