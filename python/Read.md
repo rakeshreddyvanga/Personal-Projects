@@ -1,0 +1,1 @@
+These are the projects from the coursera "Introduction to Interactive Programming" course.
