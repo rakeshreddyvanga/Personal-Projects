@@ -109,10 +109,7 @@ C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplicat
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\Newtonsoft.Json.dll
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Net.Http.Formatting.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Helpers.dll
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Http.dll
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Http.WebHost.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Mvc.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Optimization.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Razor.dll
@@ -124,10 +121,7 @@ C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplicat
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\WebMatrix.WebData.dll
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\EntityFramework.xml
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\Newtonsoft.Json.xml
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Net.Http.Formatting.xml
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Helpers.xml
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Http.xml
-C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Http.WebHost.xml
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Mvc.xml
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.Razor.xml
 C:\Users\AssAssinator\Documents\GitHub\scheme\cSharp\MvcApplication1\MvcApplication1\bin\System.Web.WebPages.xml
