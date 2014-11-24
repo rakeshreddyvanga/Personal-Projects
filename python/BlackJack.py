@@ -179,7 +179,7 @@ def stand():
                 outcome = WON_MSG                
                 score += 1                
     else:
-        outcome = LOST_MSG
+        outcome = 'Game Over'
         
    
     # if hand is in play, repeatedly hit dealer until his hand has value 17 or more
