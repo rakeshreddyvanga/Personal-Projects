@@ -25,19 +25,22 @@ public class GraphLibrary implements IGraphLibrary {
 
 	@Override
 	public boolean addEdge(String graphName, String from, String to, int cost) {
-		// TODO Auto-generated method stub
-		return false;
+		if(graphName.trim().isEmpty() || !graphDB.containsKey(graphName))
+			return false;
+		IGraph graph = graphDB.get(graphName);
+		graph.addEdge(graph.addNode(from), graph.addNode(to), cost);		
+		return true;
 	}
 
 	@Override
 	public String addGraph(String fromGraph, String toGraph) {
-		// TODO Auto-generated method stub
+		System.out.println("Add graph called with "+fromGraph+" : "+ toGraph);
 		return null;
 	}
 
 	@Override
 	public int computePath(String graph, String from, String to) {
-		// TODO Auto-generated method stub
+		System.out.println("compute path called with "+from+" : "+ to+ " : "+graph);
 		return 0;
 	}
 
