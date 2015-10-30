@@ -88,8 +88,9 @@ public class XMLReader {
             }
              
         } catch (XMLStreamException  e) {
-            e.printStackTrace();
+            return "Exception";
         }
+		return graphName;
 	}
 
 	private static Result ValidateXML(XMLInputFactory xmlInputFactory, String xml) {

@@ -1,8 +1,17 @@
 package graphProject;
 
-public class Edge {
+public class Edge implements Comparable<Edge>{
  private Node from;
- private Node to;
+ public Node getFrom() {
+	return from;
+}
+
+public Node getTo() {
+	return to;
+}
+
+
+private Node to;
  private int cost;
  
  public Edge(Node from, Node to, int cost) {
@@ -14,4 +23,12 @@ public class Edge {
  public int getCost() {
 	 return cost;
  }
+
+
+@Override
+public int compareTo(Edge edge) {
+	if(this.cost == edge.cost)
+		return 0;
+	return (this.cost > edge.cost) ? 1 : -1;
+}
 }
