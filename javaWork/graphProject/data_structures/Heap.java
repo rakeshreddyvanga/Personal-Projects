@@ -8,13 +8,13 @@ public abstract class Heap<T extends Comparable<T>> implements IHeap<T>{
 		return capacity;
 	}
 
-	protected T[] elements;
+	protected Object[] elements;
 	
-	@SuppressWarnings("unchecked")
+	
 	protected Heap(int capacity){
 		size=0;
 		this.capacity = capacity;
-		elements = (T[])new Object[capacity];
+		elements = new Object[capacity];
 	}
 	
 	protected Heap(T[] elements){
@@ -27,17 +27,19 @@ public abstract class Heap<T extends Comparable<T>> implements IHeap<T>{
 	/* (non-Javadoc)
 	 * @see graphProject.data_structures.IHeap#getTop()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public T peek(){
 		if(size>1)
-			return elements[0];
+			return (T)elements[0];
 		else //TODO throw new no elements found
 			return null;
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public T getElement(int index){
-		return elements[index];
+		return (T)elements[index];
 	}
 	
 	/* (non-Javadoc)
@@ -49,7 +51,7 @@ public abstract class Heap<T extends Comparable<T>> implements IHeap<T>{
 	}
 	
 	protected int parent(int idx){
-		return (int)Math.ceil(idx/2) -1;
+		return (int)(Math.ceil(idx/2d) -1);
 	}
 	
 	protected int left(int idx){
