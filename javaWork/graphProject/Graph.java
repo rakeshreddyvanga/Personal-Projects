@@ -59,4 +59,15 @@ public class Graph implements IGraph {
 		return costInterval;
 	}
 
+	@Override
+	public Node getNode(String node) {
+		if(node.trim().equals(" "))
+			return null;
+		return nodes.get(node);
+	}
+	
+	public List<Node> getAllNodes(){
+		return (List<Node>) nodes.values();
+	}
+
 }

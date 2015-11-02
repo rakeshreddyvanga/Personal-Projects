@@ -13,5 +13,7 @@ public interface IHeap<T extends Comparable<T>> {
 	public void updateKey(int index, T key);
 	
 	public T[] sort();
+	
+	public boolean contains(T key);
 
 }

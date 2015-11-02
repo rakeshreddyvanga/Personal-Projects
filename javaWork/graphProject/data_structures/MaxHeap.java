@@ -10,7 +10,7 @@ public class MaxHeap<T extends Comparable<T>> extends Heap<T> {
 		buildHeap();
 	}
 	
-	private void buildHeap() {
+	public void buildHeap() {
 		if(size < 1)
 			return;
 		for(int i=size/2-1;i>=0;i--){

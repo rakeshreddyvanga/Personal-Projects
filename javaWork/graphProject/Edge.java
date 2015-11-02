@@ -2,17 +2,9 @@ package graphProject;
 
 public class Edge implements Comparable<Edge>{
  private Node from;
- public Node getFrom() {
-	return from;
-}
-
-public Node getTo() {
-	return to;
-}
-
-
-private Node to;
+ private Node to;
  private int cost;
+ 
  
  public Edge(Node from, Node to, int cost) {
 	 this.from = from;
@@ -20,15 +12,22 @@ private Node to;
 	 this.cost = cost;
  }
  
+ public Node getFrom() {
+	return from;
+}
+
+public Node getTo() {
+	return to;
+}
  public int getCost() {
 	 return cost;
  }
 
-
+/**
+ * used for ordering edges based on it's weight
+ */
 @Override
 public int compareTo(Edge edge) {
-	if(this.cost == edge.cost)
-		return 0;
-	return (this.cost > edge.cost) ? 1 : -1;
+	return this.cost - edge.cost;
 }
 }

@@ -16,6 +16,7 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 		if(size < 1) //TODO throw new exception
 			return null; 
 		T min = (T)elements[0];
+		set.remove(min);
 		elements[0] = elements[size-1];
 		size--;
 		minHeapify(0);
@@ -60,7 +61,7 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 		return (T[])elements;
 	}
 	
-	private void buildHeap(){
+	public void buildHeap(){
 		if(size < 1)
 			return;
 		for(int i=size/2-1;i>=0;i--){
@@ -95,6 +96,7 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 			return; //TODO throw out of capacity exception
 		size++;
 		elements[size-1] = key;
+		set.add(key);
 		updateKey(size-1,key);		
 	}
 	

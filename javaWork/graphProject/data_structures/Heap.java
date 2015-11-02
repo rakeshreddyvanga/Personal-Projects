@@ -1,9 +1,14 @@
 package graphProject.data_structures;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 public abstract class Heap<T extends Comparable<T>> implements IHeap<T>{
 
 	protected int size;
 	protected int capacity;
+	protected Set<T> set;
 	public int getCapacity() {
 		return capacity;
 	}
@@ -15,14 +20,30 @@ public abstract class Heap<T extends Comparable<T>> implements IHeap<T>{
 		size=0;
 		this.capacity = capacity;
 		elements = new Object[capacity];
+		set = new HashSet<T>(capacity);
 	}
 	
 	protected Heap(T[] elements){
 		this.elements = elements;
 		this.capacity = elements.length;
 		size = this.capacity;
+		initSet();
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	private void initSet() {
+		set = new HashSet<T>(this.capacity);
+		for (Object object : elements) {
+			set.add((T)object);
+		}
+		
+	}
+
+	@Override
+	public boolean contains(T key){
+		return set.contains(key);
+	}
 	
 	/* (non-Javadoc)
 	 * @see graphProject.data_structures.IHeap#getTop()
