@@ -8,7 +8,14 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
+	private String hostName;
+	private int portNumber;
 	private static Scanner input;
+
+	public Client(int portNumber, String hostName) {
+		this.portNumber = portNumber;
+		this.hostName = hostName;
+	}
 
 	public static void main(String args[]) {
 		input = new Scanner(System.in);
@@ -16,32 +23,60 @@ public class Client {
 		String hostName = input.nextLine();
 		System.out.println("Enter a port number: ");
 		int portNumber = Integer.parseInt(input.nextLine());
-		//System.out.println(hostName+" : "+ portNumber);
+		// System.out.println(hostName+" : "+ portNumber);
 		Socket socket = null;
 		String request = "";
 		String response = "";
-		try{
-			socket = new Socket(hostName,portNumber);
+		try {
+			socket = new Socket(hostName, portNumber);
 			PrintWriter toServer = new PrintWriter(socket.getOutputStream(), true);
-		    BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		    
-		    while( (response = fromServer.readLine()) != null ){
-		    	System.out.println("Server: " + response);
-		    	
-		    	System.out.println("client:");
-		    	request = input.nextLine();
-		    	if(request != null) {
-		    		toServer.println(request);
-		    		if(request.equals("end")) {
-		    			socket.close();
-		    			break;
-		    		}
-		    	}
-		    }
-		}catch(IOException ioException) {
-			
+			BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+			while ((response = fromServer.readLine()) != null) {
+				System.out.println("Server: " + response);
+
+				System.out.println("client:");
+				request = input.nextLine();
+				if (request != null) {
+					toServer.println(request);
+					if (request.equals("end")) {
+						socket.close();
+						break;
+					}
+				}
+			}
+		} catch (IOException ioException) {
+
 		}
 	}
-	
-	
+
+	public void communicate(String hostName, int portNumber) {
+
+		// System.out.println(hostName+" : "+ portNumber);
+		Socket socket = null;
+		String request = "";
+		String response = "";
+		try {
+			socket = new Socket(hostName, portNumber);
+			PrintWriter toServer = new PrintWriter(socket.getOutputStream(), true);
+			BufferedReader fromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+			while ((response = fromServer.readLine()) != null) {
+				System.out.println("Server: " + response);
+
+				System.out.println("client:");
+				request = input.nextLine();
+				if (request != null) {
+					toServer.println(request);
+					if (request.equals("end")) {
+						socket.close();
+						break;
+					}
+				}
+			}
+		} catch (IOException ioException) {
+
+		}
+
+	}
 }

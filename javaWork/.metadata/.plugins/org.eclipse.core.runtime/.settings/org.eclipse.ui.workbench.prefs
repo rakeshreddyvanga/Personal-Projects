@@ -1,0 +1,8 @@
+//org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+ColorsAndFontsPreferencePage.expandedCategories=Torg.eclipse.ui.workbenchMisc\tTorg.eclipse.debug.ui.presentation
+ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.debug.ui.VariableTextFont
+PLUGINS_NOT_ACTIVATED_ON_STARTUP=org.eclipse.m2e.discovery;
+eclipse.preferences.version=1
+org.eclipse.debug.ui.VariableTextFont=1|Consolas|10.2|0|WINDOWS|1|-17|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+org.eclipse.jface.textfont=1|Consolas|10.8|0|WINDOWS|1|-18|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+org.eclipse.ui.workbench.texteditor.blockSelectionModeFont=1|Consolas|10.8|0|WINDOWS|1|-18|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;

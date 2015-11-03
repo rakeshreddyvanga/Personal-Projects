@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class DirectoryPrint {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Directory root = new Directory(1000);
 		ArrayList<Directory> child = new ArrayList<>();
 		child.add(new Directory(500));

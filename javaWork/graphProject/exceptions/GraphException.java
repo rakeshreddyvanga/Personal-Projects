@@ -2,7 +2,7 @@ package graphProject.exceptions;
 
 public class GraphException extends Exception {
 
-	private String type;
+	private ExceptionEnum type;
 	private String value;
 	/**
 	 * serial UID
@@ -11,30 +11,43 @@ public class GraphException extends Exception {
 	
 	public GraphException() { super(); }
 
-	public GraphException(String type, String value) { 
-		super(); 
+	public GraphException(ExceptionEnum type, String value) {  
+		super(exceptionMsg(type,value));
 		this.type = type;
 		this.value = value;
 		}
 
-	public GraphException(String message, int productId, Throwable cause) { super(message, cause); this.productId = productId; }
+	public GraphException(ExceptionEnum type, String value, Throwable cause) { 
+		super(exceptionMsg(type,value), cause); 
+		this.type = type;
+		this.value = value;
+		}
 
 	@Override
 	public String toString() {
 		return super.toString();
 	}
 
-	private String exceptionMsg(){
-		
+	private static String exceptionMsg(ExceptionEnum exceptionType, String value){
+		switch(exceptionType) {
+		case NodeNotFoundException:
+			return "Node "+value+" is not present in the graph.";
+		case GraphNotFoundException:
+			return "Graph '"+value+"' is invalid.";
+		case InvalidXMLException:
+			return "Please check the following error with XML: "+value;
+		case PathNotFoundException:
+			return "There is no path from: "+value;
+		case DataStructureException:
+			return value;			
+		default:
+			return value;
+		}
 	}
 	
 	@Override
 	public String getMessage() {
-		return super.getMessage() + " for productId :" + productId;
-	}
-
-	public int getProductId() {
-		return productId;
+		return String.format("<error msg=%s />", super.getMessage());
 	}
 
 	

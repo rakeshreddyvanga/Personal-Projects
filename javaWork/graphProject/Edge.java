@@ -30,4 +30,8 @@ public Node getTo() {
 public int compareTo(Edge edge) {
 	return this.cost - edge.cost;
 }
+
+public String toString(){
+	return String.format("<edge from=%s to=%s cost=%d/>",from.getLabel(),to.getLabel(),cost);
+}
 }

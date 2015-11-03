@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.HashMap;
 
 import graphProject.data_structures.MinHeap;
+import graphProject.data_structures.exceptions.HeapException;
+import graphProject.exceptions.ExceptionEnum;
+import graphProject.exceptions.GraphException;
 
 public class GraphLibrary implements IGraphLibrary {
 
@@ -27,9 +30,9 @@ public class GraphLibrary implements IGraphLibrary {
 	}
 
 	@Override
-	public boolean addEdge(String graphName, String from, String to, int cost) {
+	public boolean addEdge(String graphName, String from, String to, int cost) throws GraphException {
 		if(graphName.trim().isEmpty() || !graphDB.containsKey(graphName))
-			return false;
+			throw new GraphException(ExceptionEnum.GraphNotFoundException,graphName);
 		IGraph graph = graphDB.get(graphName);
 		graph.addEdge(graph.addNode(from), graph.addNode(to), cost);		
 		return true;
@@ -42,9 +45,9 @@ public class GraphLibrary implements IGraphLibrary {
 	}
 
 	@Override
-	public String computePath(String graph, String from, String to) {
+	public String computePath(String graph, String from, String to) throws GraphException {
 		if(graph.trim().isEmpty() || !graphDB.containsKey(graph))
-			return null; // TODO : throw exception
+			throw new GraphException(ExceptionEnum.GraphNotFoundException,graph);
 		//get graph object and edges
 		IGraph graphObj = graphDB.get(graph);
 		List<Node> nodes = graphObj.getAllNodes();
@@ -52,9 +55,13 @@ public class GraphLibrary implements IGraphLibrary {
 		//get nodes
 		Node fromNode = graphObj.getNode(from);
 		Node toNode = graphObj.getNode(to);
-		if(fromNode == null || toNode == null)
-			return null; //TODO :throw exception
+		if(fromNode == null)
+			throw new GraphException(ExceptionEnum.NodeNotFoundException,from);
+		if(toNode == null)
+			throw new GraphException(ExceptionEnum.NodeNotFoundException,to);
 		Path path = new Path(fromNode, toNode);
+		//catch heap exceptions
+		try{
 		MinHeap<Node> minQueue = new MinHeap<>(nodes.size());
 		//initialize edges for Dijkstras algorithm
 		initializeEdges(nodes);
@@ -68,11 +75,14 @@ public class GraphLibrary implements IGraphLibrary {
 				relaxEdges(edge,minQueue,path);
 			}
 		}
+		}catch(HeapException heapException){
+			throw new GraphException(ExceptionEnum.DataStructureException,heapException.getMessage());
+		}
 		//As the algorithm sets minimum cost for all the nodes, just return to nodes cost
-		return path.toString();
+		return path.getPath();
 	}
 
-	private void relaxEdges(Edge edge, MinHeap<Node> minQueue, Path path) {
+	private void relaxEdges(Edge edge, MinHeap<Node> minQueue, Path path) throws HeapException {
 		Node from = edge.getFrom();
 		Node to = edge.getTo();
 		if(to.getMinCost() > from.getMinCost()+edge.getCost()){

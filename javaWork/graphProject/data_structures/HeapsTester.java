@@ -1,5 +1,7 @@
 package graphProject.data_structures;
 
+import graphProject.data_structures.exceptions.HeapException;
+
 public class HeapsTester {
 
 	public static void main(String[] args) {
@@ -7,6 +9,7 @@ public class HeapsTester {
 		System.out.println(ceilValue);
 		System.out.println( (int)(ceilValue-1)); */
 		//Integer [] elements = {8,2,9,1,7,3,6,4,5};
+		try{
 		MaxHeap<Integer> max = new MaxHeap<>(5);
 		Integer five = new Integer(5);
 		max.offer(five);
@@ -18,7 +21,10 @@ public class HeapsTester {
 		max.offer(8);
 		for(int i=0;i<5;i++)
 			System.out.println(max.poll().intValue());
-		
+		}
+		catch(HeapException hexp){
+			System.out.println(hexp.getMessage());
+		}
 			
 			
 

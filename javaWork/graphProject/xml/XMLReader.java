@@ -16,25 +16,27 @@ import javax.xml.validation.Validator;
 import org.xml.sax.SAXException;
 
 import graphProject.GraphLibrary;
-import graphProject.Result;
+import graphProject.exceptions.ExceptionEnum;
+import graphProject.exceptions.GraphException;
 
 
 public class XMLReader {
 
 	public static void main(String[] args) {
-		//XMLParser("<graphProject><graph name=\"graph1\" costInterval=\"45\"><edge from=\"A\" to=\"B\" cost=\"5\"></edge><edge from=\"B\" to=\"C\" cost=\"8\"/><edge from=\"C\" to=\"A\" cost=\"12\"/></graph></graphProject>");
+		XMLReader parser = new XMLReader();
+		String ans=parser.XMLParser("<graphProject><graph name=\"graph1\" costInterval=\"45\"><edge from=\"A\" to=\"B\" cost=\"6\"></edge><edge from=\"A\" to=\"D\" cost=\"3\"/><edge from=\"D\" to=\"A\" cost=\"2\"/><edge from=\"D\" to=\"B\" cost=\"1\"/><edge from=\"D\" to=\"C\" cost=\"2\"/><edge from=\"A\" to=\"C\" cost=\"9\"/><edge from=\"C\" to=\"E\" cost=\"8\"/><edge from=\"E\" to=\"A\" cost=\"7\"/></graph><path graph=\"graph1\" from=\"C\" to=\"C\" /></graphProject>");
+		System.out.println(ans);
 	}
 	
 	public String XMLParser(String xml) {
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-        Result result = ValidateXML(xmlInputFactory,xml);
+        //initialize the library
         GraphLibrary library = new GraphLibrary();
         String graphName = "";
-        if(result.errorOccured()) {
-        	//System.out.println(result.getErrorMessage());
-        	return result.getErrorMessage();
-        }
+        
+        //Go through the XML
         try {
+        	ValidateXML(xmlInputFactory,xml); //Validate the XML
             XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(new StringReader(xml));
             while(xmlEventReader.hasNext()){
                 XMLEvent xmlEvent = xmlEventReader.nextEvent();
@@ -74,7 +76,7 @@ public class XMLReader {
                 	   Attribute fromAttr = startElement.getAttributeByName(new QName("from"));
                        Attribute toAttr = startElement.getAttributeByName(new QName("to"));
                        if(fromAttr != null && toAttr != null && nameAttr != null)
-                    	   library.computePath(nameAttr.getValue(), fromAttr.getValue(), toAttr.getValue());
+                    	   return library.computePath(nameAttr.getValue(), fromAttr.getValue(), toAttr.getValue());
                    }
                }
                //Check for complete end of the xml and print the errors
@@ -87,16 +89,15 @@ public class XMLReader {
                }
             }
              
-        } catch (XMLStreamException  e) {
-            return "Exception";
+        } catch (Exception e) {
+            return e.getMessage();
         }
 		return graphName;
 	}
 
-	private static Result ValidateXML(XMLInputFactory xmlInputFactory, String xml) {
+	private static void ValidateXML(XMLInputFactory xmlInputFactory, String xml) throws GraphException {
 
 		XMLStreamReader reader;
-		Result result = new Result();
 		try {
 			reader = xmlInputFactory.createXMLStreamReader(new StringReader(xml));
 			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -104,12 +105,8 @@ public class XMLReader {
 			Validator validator = schema.newValidator();
 			validator.validate(new StAXSource(reader));
 		} catch (XMLStreamException | SAXException | IOException  e) {
-			result.setErrorFlag(true);
-			result.setMessage(e.getMessage());
-			return result;
+			throw new GraphException(ExceptionEnum.InvalidXMLException,e.getMessage());
 		}
-		result.setErrorFlag(false);
-		return result;
 	}
 
 }

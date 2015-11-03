@@ -41,11 +41,6 @@ public class Graph implements IGraph {
 		
 		return node;
 	}
-	@Override
-	public int computePath(Node from, Node to) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	public String getGraphName() {
 		return graphName;
@@ -67,7 +62,7 @@ public class Graph implements IGraph {
 	}
 	
 	public List<Node> getAllNodes(){
-		return (List<Node>) nodes.values();
+		return new ArrayList<Node>(nodes.values());
 	}
 
 }

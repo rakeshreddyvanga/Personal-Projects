@@ -1,18 +1,20 @@
 package graphProject.data_structures;
 
-public interface IHeap<T extends Comparable<T>> {
+import graphProject.data_structures.exceptions.HeapException;
+
+public interface IHeap<T extends Comparable<T>>  {
 
 	boolean isEmpty();
 	
 	public T peek();
 	
-	public T poll();
+	public T poll() throws HeapException;
 	
-	public void offer(T key);
+	public void offer(T key) throws HeapException;
 	
-	public void updateKey(int index, T key);
+	public void updateKey(int index, T key) throws HeapException;
 	
-	public T[] sort();
+	public T[] sort() throws HeapException;
 	
 	public boolean contains(T key);
 

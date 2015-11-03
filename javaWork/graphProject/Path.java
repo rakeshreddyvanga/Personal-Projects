@@ -1,15 +1,16 @@
 package graphProject;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Stack;
+
+import graphProject.exceptions.ExceptionEnum;
+import graphProject.exceptions.GraphException;
 
 public class Path {
 
 	private int cost;
 	private Node source;
 	private Node to;
-	private List<Edge> edges;
 	HashMap<Node,Edge> edgeTo;
 	
 	public Path(Node source, Node to){
@@ -23,20 +24,21 @@ public class Path {
 		edgeTo.put(node,edge);
 	}
 
-	public String toString(){
+	public String getPath() throws GraphException {
 		Stack<Edge> revPath = getRoute();
 		StringBuilder path = new StringBuilder();
+		path.append("<path cost="+cost+">");
 		while(!revPath.isEmpty()){
 			Edge edge = revPath.pop();
-			path.append(edge.getFrom().getLabel());
+			path.append(edge.toString());
 		}
-		path.append(to.getLabel());
+		path.append("</path>");
 		return path.toString();
 	}
 	
-	public Stack<Edge> getRoute() {
+	public Stack<Edge> getRoute() throws GraphException {
 		if(to.getMinCost() == Integer.MAX_VALUE)
-			return null; // TODO: Throw exception
+			throw new GraphException(ExceptionEnum.PathNotFoundException,source.getLabel()+" to "+ to.getLabel());
 		Stack<Edge> revPath = new Stack<Edge>();
 		for(Edge edge = edgeTo.get(to); edge != null;edge=edgeTo.get(edge.getFrom())){
 			revPath.push(edge);
