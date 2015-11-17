@@ -12,7 +12,7 @@ public class PatternMatch {
 	
 
     public static boolean wordPattern(String pattern, String str) {
-        if(pattern == "" || str == "")
+        if(pattern.equals("") || str.equals(""))
             return false;
         String[] s = str.split(" ");
         if(s.length != pattern.length())
@@ -21,7 +21,7 @@ public class PatternMatch {
         for(int i=0; i<pattern.length(); i++){
             char c = pattern.charAt(i);
             if(map.containsKey(c)){
-                if(map.get(c) != s[i]){
+                if(!map.get(c).equals(s[i])){
                 	System.out.println(map.get(c) + " "+ s[i]);
                 	
                     return false;

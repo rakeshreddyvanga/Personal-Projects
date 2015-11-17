@@ -33,11 +33,11 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 		int smallest = idx;
 		int left = left(idx);
 		int right = right(idx);
-		if(left < size && ((T) elements[left]).compareTo((T) elements[idx]) == 1)
+		if(left < size && ((T) elements[left]).compareTo((T) elements[idx]) > 0)
 			smallest = idx;
 		else
 			smallest = left;
-		if(right < size && ((T)elements[right]).compareTo((T)elements[smallest]) == -1 )
+		if(right < size && ((T)elements[right]).compareTo((T)elements[smallest]) < 0 )
 			smallest = right;
 		
 		if(smallest != idx && smallest < size){
@@ -81,10 +81,10 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 		if(index >= size)
 			throw new IndexOutOfBoundsException("Cannot access Index: "+index+" from heap of size: "+size);
 		
-		if(((T)elements[index]).compareTo(key) == -1)
+		if(((T)elements[index]).compareTo(key) < 0)
 			throw new HeapException("The "+index+"'s value is already smaller.");
 		elements[index] = key;
-		while(index > 0 && ((T)elements[parent(index)]).compareTo((T)elements[index]) == 1) {
+		while(index > 0 && ((T)elements[parent(index)]).compareTo((T)elements[index]) > 0) {
 			T temp =  (T)elements[parent(index)];
 			elements[parent(index)] =  elements[index];
 			elements[index] = temp;

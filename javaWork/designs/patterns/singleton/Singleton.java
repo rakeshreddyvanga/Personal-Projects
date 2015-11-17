@@ -11,7 +11,7 @@ public class Singleton {
 	
 	public Singleton getInstance(){
 		if(instance == null){
-			synchronized(this.getClass()){
+			synchronized(Singleton.class){
 				if(instance == null){
 					instance = new Singleton();
 				}				
@@ -23,7 +23,7 @@ public class Singleton {
 	
 	public Singleton getFiveInstances() {
 		if (instance == null || count < 5) {
-			synchronized (this.getClass()) {
+			synchronized (Singleton.class) {
 				if (instance == null || count < 5) {
 					instance = new Singleton();
 					count++;

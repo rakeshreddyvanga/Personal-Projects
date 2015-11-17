@@ -3,7 +3,7 @@ package selfPreparation;
 public class SmallestNumber {
 
 	public static void main(String[] args) {
-		System.out.println(convert("1301256",4));
+		System.out.println(convert("41520123",4));
 
 	}
 	
@@ -22,7 +22,7 @@ public class SmallestNumber {
 		char rmv = str.charAt(0);
 		int idx = 0;
 		for(int i=1;i<str.length();i++){
-			if(str.charAt(i) > rmv){
+			if(str.charAt(i) >= rmv){
 				rmv = str.charAt(i);
 				idx= i;
 			}

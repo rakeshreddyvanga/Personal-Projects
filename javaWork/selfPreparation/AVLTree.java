@@ -133,7 +133,7 @@ public class AVLTree {
 		}
 
 		if (root == null)
-			return null;
+			return root;
 
 		root.height = Math.max(height(root.left), height(root.right)) + 1;
 
