@@ -158,4 +158,16 @@ public class TestCoffeeMaker extends TestCase {
 		assert(api.isPlateOn() == false);
 		assert(api.isValveClosed() == true);
 	}
+	
+	public void potRemovedWhileNotEmptyAndReplacedNotEmpty(){
+		
+	}
+	
+	public void BoilerEmptyPotNotEmpty(){
+		normalBrew();
+		assert(api.isBoilerOn() == false);
+		assert(api.isLightOn() == true);
+		assert(api.isPlateOn() == true);
+		assert(api.isValveClosed() == true);
+	}
 }
