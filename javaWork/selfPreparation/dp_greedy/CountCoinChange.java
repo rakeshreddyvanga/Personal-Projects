@@ -1,4 +1,4 @@
-package preparation;
+package selfPreparation.dp_greedy;
 
 public class CountCoinChange {
 
