@@ -1,4 +1,4 @@
-package preparation;
+package selfPreparation;
 
 public class QuickSelect {
 

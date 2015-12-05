@@ -93,11 +93,11 @@ public class PlanningTrip {
 				}
 			}
 			p[i] = min;
+			//below three lines are to store the pit stop hotels
 			List<Integer> minStop = new ArrayList<Integer>(stop);
 			minStop.add(a[i]);
 			stops.put(a[i],minStop);
 		}
-		//ans = new ArrayList<Integer>();
 		ans.addAll(stops.get(a[a.length-1]));
 		return p[a.length-1];
 	}

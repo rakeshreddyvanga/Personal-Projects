@@ -3,7 +3,6 @@ package designs.elevator.logic;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import javax.print.attribute.standard.Destination;
 
 import designs.elevator.enums.Direction;
 import designs.elevator.enums.Status;
@@ -60,5 +59,7 @@ public class Elevator implements IElevator {
 		nextDestination.offer(floorNo);
 
 	}
+	
+	/*------------------ Further Enhancements ------------------------*/
 
 }
