@@ -1,14 +1,14 @@
-package graphProject;
+package selfPreparation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Graph implements IGraph {
+public class Graph {
 
 	private String graphName;
-	private HashMap<String, Node> nodes;
-	private List<Edge> edges;
+	private HashMap<String, GraphNode> nodes;
+	private List<GraphEdge> edges;
 	private int costInterval;
 	
 	public Graph(String graphName, int costInterval){
@@ -18,21 +18,20 @@ public class Graph implements IGraph {
 		this.costInterval = costInterval;
 	}
 	
-	@Override
-	public Edge addEdge(Node from, Node to, int cost) {
-		Edge edge = null;
+	public GraphEdge addEdge(GraphNode from, GraphNode to, int cost) {
+		GraphEdge edge = null;
 		if(cost <= costInterval) {
-			edge = new Edge(from, to, cost);
+			edge = new GraphEdge(from, to, cost);
 			from.addOutEdge(edge);
 			edges.add(edge);
 		}		
 		return edge;
 	}
 	
-	public Node addNode(String label){
-		Node node = null;
+	public GraphNode addNode(String label){
+		GraphNode node = null;
 		if(!nodes.containsKey(label)) {
-			node = new Node(label);
+			node = new GraphNode(label);
 			nodes.put(label, node);
 		}
 		else
@@ -45,7 +44,7 @@ public class Graph implements IGraph {
 		return graphName;
 	}
 
-	public List<Edge> getEdges() {
+	public List<GraphEdge> getEdges() {
 		return edges;
 	}
 
@@ -53,15 +52,15 @@ public class Graph implements IGraph {
 		return costInterval;
 	}
 
-	@Override
-	public Node getNode(String node) {
+	public GraphNode getNode(String node) {
 		if(node.trim().equals(" "))
 			return null;
 		return nodes.get(node);
 	}
 	
-	public List<Node> getAllNodes(){
-		return new ArrayList<Node>(nodes.values());
+	public List<GraphNode> getAllNodes(){
+		return new ArrayList<GraphNode>(nodes.values());
 	}
 
 }
+

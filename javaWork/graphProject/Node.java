@@ -6,13 +6,11 @@ import java.util.List;
 public class Node implements Comparable<Node>{
  private String label;
  private List<Edge> outEdges;
- private List<Edge> inEdges;
  private int minCost;
  
  public Node(String name){
 	 this.label = name;
 	 setOutEdges(new ArrayList<Edge>());
-	 setInEdges(new ArrayList<Edge>());
 	 minCost = Integer.MAX_VALUE;
  }
 
@@ -22,18 +20,6 @@ public List<Edge> getOutEdges() {
 
 public void setOutEdges(List<Edge> outEdges) {
 	this.outEdges = outEdges;
-}
-
-public List<Edge> getInEdges() {
-	return inEdges;
-}
-
-public void setInEdges(List<Edge> inEdges) {
-	this.inEdges = inEdges;
-}
-
-public void addInEdge(Edge inEdge){
-	inEdges.add(inEdge);
 }
 
 public void addOutEdge(Edge outEdge){

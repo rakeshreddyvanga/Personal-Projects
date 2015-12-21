@@ -21,12 +21,11 @@ public class ComputerHackers {
 		int [] optimal = new int[low.length+1];
 		//base cases
 		optimal[0] = 0;
-		optimal[1] = Math.max(low[0],high[0]);
-		/*if(low[0] > high[0])
+		if(low[0] > high[0])
 			optimal[1] = low[0];
 		else
 			optimal[1] = high[0];
-		*/
+		
 		for(int i=2;i<=low.length;i++){
 			optimal[i] = Math.max(low[i-1] + optimal[i-1], high[i-1] + optimal[i-2]);
 		}
