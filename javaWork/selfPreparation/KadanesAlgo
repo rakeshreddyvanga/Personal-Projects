@@ -1,0 +1,42 @@
+package selfPreparation;
+
+public class KadanesAlgo {
+
+	public static void main(String[] args) {
+		//int nums[] = {2,-3,8,13,-20,2,4};
+		int nums[] = {-2,-3,-8,-13,-20,-12,-4};
+		sum(nums);
+
+	}
+	
+	public static void sum(int [] nums) {
+		if(nums == null || nums.length == 0) {
+			System.out.println("Not valid input.");
+			return;
+		}
+		
+		//check for all negative numbers case:
+		//if all negatives found return the max number(min absolute value) from them.
+		int count = 0;
+		int maxSum = Integer.MIN_VALUE;
+		for(int idx=0;idx<nums.length;idx++){
+			if(nums[idx] < 0) //count if the number is negative
+				count++;
+			if(maxSum < nums[idx]) // at the same store the max value
+				maxSum = nums[idx];
+		}
+		if(count == nums.length) { // all the numbers are negative
+			System.out.println(maxSum);
+			return;
+		}
+		maxSum = Integer.MIN_VALUE; //reset maxSum value
+		//Start Kadane's Algorithm
+		int curSum = 0;
+		for(int idx=0;idx<nums.length;idx++){
+			curSum = Math.max(0, curSum+nums[idx]); //curSum will have continuous max sum till it is greater than zero.
+			maxSum = Math.max(maxSum, curSum); //maxSum will have the max of all curSums
+		}
+		System.out.println(maxSum);
+	}
+
+}
