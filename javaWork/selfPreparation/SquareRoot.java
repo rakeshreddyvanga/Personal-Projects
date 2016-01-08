@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Squareroot 
 {
 
-//Newton - Rahson Method
+//Newton - Raphson Method
 	public static void main(String[] args) 
 	{
 		System.out.println("Please enter a number to find the squareroot");
