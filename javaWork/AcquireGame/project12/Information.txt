@@ -1,1 +1,0 @@
-First Run the GameAdmin.jar and then run four player jars(evaluation1 once, evaluation2 once, random twice).

@@ -1,7 +1,0 @@
-<graphProject>
-<graph name="graph1" costInterval="45">
-	<edge from="A" to="B" cost=5/>
-	<edge from="B" to="C" cost=8/>
-	<edge from="C" to="A" cost=12/>
-</graph>
-</graphProject>
